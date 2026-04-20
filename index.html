@@ -1521,13 +1521,13 @@ document.getElementById('transmission-form').addEventListener('submit', async fu
   const obsession = document.getElementById('obsession').value.trim();
   
   try {
-    const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/transmit_signal`, {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/applications`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'apikey': SUPABASE_ANON_KEY,
         'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-        'Prefer': 'return=minimal'
+        'Prefer': 'return=representation'
       },
       body: JSON.stringify({ callsign, social, contact, obsession })
     });
