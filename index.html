@@ -1305,6 +1305,11 @@ section:not(:last-child)::after {
         </div>
         
         <div class="form-group">
+          <label class="form-label" for="contact">通讯频道</label>
+          <input type="text" id="contact" class="form-input" placeholder="微信 / QQ / 电话（任填一个，方便我们联系你）">
+        </div>
+        
+        <div class="form-group">
           <label class="form-label" for="obsession">核心问题</label>
           <textarea id="obsession" class="form-textarea" placeholder="最近让你熬到凌晨的怪东西是什么？" required></textarea>
         </div>
@@ -1512,6 +1517,7 @@ document.getElementById('transmission-form').addEventListener('submit', async fu
   
   const callsign = document.getElementById('callsign').value.trim();
   const social = document.getElementById('social').value.trim();
+  const contact = document.getElementById('contact').value.trim();
   const obsession = document.getElementById('obsession').value.trim();
   
   try {
@@ -1523,7 +1529,7 @@ document.getElementById('transmission-form').addEventListener('submit', async fu
         'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
         'Prefer': 'return=minimal'
       },
-      body: JSON.stringify({ callsign, social, obsession })
+      body: JSON.stringify({ callsign, social, contact, obsession })
     });
     
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
